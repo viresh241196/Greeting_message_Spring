@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class GreetingService implements IGreetingService {
 	
 	@Override
 	public Greeting addGreeting(User user) {
-		String message = String.format(template,(user.toString().isEmpty()?"Hello World":user.toString()));
+		String message = String.format(template,(user.toString().isEmpty()?"World":user.toString()));
 		return greetingRepository.save(new Greeting(counter.incrementAndGet(),message));
 	}
 	

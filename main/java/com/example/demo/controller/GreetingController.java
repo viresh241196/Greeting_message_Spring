@@ -12,17 +12,15 @@ import com.example.demo.service.IGreetingService;
 @RestController
 @RequestMapping("/greetings")
 public class GreetingController {
-//	private static final String template ="Hello, %s!";
-//	private static final AtomicLong counter =new AtomicLong();
 
 	@Autowired
 	private IGreetingService greetingService;
 	
 	@GetMapping("") 
-	public Greeting greeting(@RequestParam(value="name", defaultValue="World")String name) {
+	public Greeting greeting(@RequestParam(value= "firstName", defaultValue="")String first,@RequestParam(value= "lastName", defaultValue="")String last) {
 		User user = new User();
-		user.setFirstName(name);
-		return greetingService.addGreeting(user);
-				
+		user.setFirstName(first);
+		user.setLastName(last);
+		return greetingService.addGreeting(user);		
 	}
 }
